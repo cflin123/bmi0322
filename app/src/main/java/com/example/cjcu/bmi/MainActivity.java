@@ -1,5 +1,6 @@
 package com.example.cjcu.bmi;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void findViews() {
@@ -49,16 +49,18 @@ public class MainActivity extends AppCompatActivity {
         float w = Float.parseFloat(ed_weight.getText().toString());
         float h = Float.parseFloat(ed_height.getText().toString());
         float bmi = w / (h*h);
-        Log.d("BMI=", String.valueOf(bmi));
-        Toast.makeText(this,String.valueOf(bmi),Toast.LENGTH_LONG).show();
+        //Log.d("BMI=", String.valueOf(bmi));
+        //Toast.makeText(this,String.valueOf(bmi),Toast.LENGTH_LONG).show();
 
-        new AlertDialog.Builder(this)
-                .setMessage("BMI="+bmi)
-                .setTitle("BMI值")
-                .setPositiveButton("OK",null)
-                .setNegativeButton("CANCEL",null)
-                .show();
-
+        //new AlertDialog.Builder(this)
+         //       .setMessage("BMI="+bmi)
+          //      .setTitle("BMI值")
+           //     .setPositiveButton("OK",null)
+            //    .setNegativeButton("CANCEL",null)
+             //   .show();
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("EX_BMI",bmi);
+        startActivity(intent);
 
     }
 }
